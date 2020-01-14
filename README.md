@@ -1,2 +1,2 @@
-# scraping-tools-chrome-extensions
-Some drafts on web scraping via browser
+# Web grabber
+Grab dynamically rendered HTML source code
