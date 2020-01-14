@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src='jquery.min.js'></script>
+    <script src='webgraber.js'></script>
+  </head>
+  <body style="width:600px;">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+            <div class="col">
+              <h5><strong>Web grabber v1.0</strong></h5>
+            </div>
+            <div class="col text-right">
+              <a href="https://www.patreon.com/code_monkey_king" target="_blank">Support project</a>
+            </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row mt-2">
+          <div class="col">
+            <strong>Page source:</strong>
+          </div>
+          <div class="col text-right">
+            <button id="copy">Copy to clipboard</button>
+          </div>
+        </div>
+        <textarea id="source" class="form-control noresize mt-3" placeholder="Grabbing curretnt HTML page..." rows="10"></textarea>
+      </div>
+    </div>
+  </body>
+</html>

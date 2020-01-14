@@ -1,6 +1,3 @@
-// @author Rob W <http://stackoverflow.com/users/938089/rob-w>
-// Demo: var serialized_html = DOMtoString(document);
-
 function DOMtoString(document_root) {
     var html = '',
         node = document_root.firstChild;
@@ -19,7 +16,6 @@ function DOMtoString(document_root) {
             html += '<!--' + node.nodeValue + '-->';
             break;
         case Node.DOCUMENT_TYPE_NODE:
-            // (X)HTML documents are identified by public identifiers
             html += "<!DOCTYPE " + node.name + (node.publicId ? ' PUBLIC "' + node.publicId + '"' : '') + (!node.publicId && node.systemId ? ' SYSTEM' : '') + (node.systemId ? ' "' + node.systemId + '"' : '') + '>\n';
             break;
         }
