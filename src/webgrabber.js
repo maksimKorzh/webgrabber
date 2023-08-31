@@ -10,18 +10,20 @@ window.addEventListener('load', function load(event) {
 chrome.runtime.onMessage.addListener(function(request, sender) {
   if (request.action == "getSource") {
     $('#source').text(request.source);
+    attempt++
   }
 });
 
-function onWindowLoad() {
-  chrome.tabs.executeScript(null, {
-    file: "scrape.js"
-  }, function() {
-    // If you try and inject into an extensions page or the webstore/NTP you'll get an error
-    if (chrome.runtime.lastError) {
-      $('#source').text('There was an error injecting script : \n' + chrome.runtime.lastError.message);
-    }
-  });
-
+async function getTabId() {
+  let queryOptions = { active: true, currentWindow: true };
+  let tabs = await chrome.tabs.query(queryOptions);
+  return tabs[0].id;
 }
 
+async function onWindowLoad() {
+  var tabId = await getTabId()
+  chrome.scripting.executeScript({
+    target: {tabId: tabId, allFrames: true},
+    files: ['scrape.js'],
+  });
+}

@@ -24,7 +24,23 @@ function DOMtoString(document_root) {
     return html;
 }
 
-chrome.runtime.sendMessage({
+infiniteScroll(document).then(
+  chrome.runtime.sendMessage({
     action: "getSource",
     source: DOMtoString(document)
-});
+  })
+)
+function infiniteScroll(document_root) {
+  let oldY = window.scrollY
+  let limit = document.documentElement.scrollHeight
+  window.scrollBy(0, limit)
+  let newY = window.scrollY
+  if (newY == oldY) {
+    chrome.runtime.sendMessage({
+      action: "getSource",
+      source: DOMtoString(document)
+    })
+    return
+  }
+  else setTimeout(infiniteScroll, 1000);
+}

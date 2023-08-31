@@ -1,11 +1,11 @@
 {
   "name": "Web grabber",
   "version": "1.0",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "description": "Grab rendered HTML pages' source code",
-  "browser_action": {
+  "action": {
     "default_icon": "scrape.png",
-    "default_popup": "webgraber.html"
+    "default_popup": "webgrabber.html"    // optional
   },
-  "permissions": ["tabs", "<all_urls>"]
+  "permissions": ["scripting", "activeTab", "tabs"]
 }
